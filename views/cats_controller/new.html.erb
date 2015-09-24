@@ -1,10 +1,34 @@
+<p>
+<% if flash.now.empty? %>
+  Flash.now is empty!
+<% else %>
+  <li>Flash.now persisted:</li>
+  <li><%= "#{flash.now}" %></li>
+<% end %>
+</p>
+
+<p>
+  All Flash: <%= flash.to_json %>
+</p>
+
+<p>
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |err| %>
+      <li>Flash[:error] => <%= err %></li>
+    <% end %>
+  </ul>
+<% end %>
+</p>
+<p><a href="/cats">Back to cats</a></p>
+
 <form action="/cats" method="POST">
   <label>Name
-    <input type="text" name="cat[name]" value="<%= @cat.name %>">
+    <input type="text" name="cat[name]" value="<%= @catname %>">
   </label>
 
   <label>Owner
-    <input type="text" name="cat[owner]" value="<%= @cat.owner %>">
+    <input type="text" name="cat[owner]" value="<%= @catowner %>">
   </label>
 
   <input type="submit">

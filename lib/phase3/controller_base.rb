@@ -11,9 +11,9 @@ module Phase3
     # pass the rendered html to render_content
 
     def render(template_name)
-      b = binding      
+      b = binding
       f = File.read(
-            "views/#{self.class.name.underscore}/#{template_name}.html.erb"
+            "../views/#{self.class.name.underscore}/#{template_name}.html.erb"
           )
       render_content(ERB.new(f).result(b), "text/html")
     end

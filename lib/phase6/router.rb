@@ -30,7 +30,6 @@ module Phase6
 
     def initialize
       @routes = []
-
     end
 
     # simply adds a new route to the list of routes
@@ -57,15 +56,27 @@ module Phase6
       @routes.select { |route| route.matches?(req) }.first
     end
 
+  
+
     # either throw 404 or call run on a matched route
     def run(req, res)
       matching_route = match(req)
+      verified? = valid_auth_token?(req)
+      reset_auth_token!
+
       if matching_route
-        matched_route.run(req, res)
+        unless (req.request_method == "GET" || verified?)
+          res.status = "H4XX0R ALERT"
+          return res
+        else
+          load_auth_token(res)
+          matching_route.run(req, res)
+        end
       else
         res.status = 404
         res
       end
+
     end
 
 

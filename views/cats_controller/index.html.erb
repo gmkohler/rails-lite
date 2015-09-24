@@ -1,3 +1,19 @@
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |err| %>
+      <li><%= err %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if flash[:redirect] %>
+  <ul>
+    <% flash[:redirect].each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h1>ALL THE CATS</h1>
 <pre><%= @cats.to_s %></pre>
 <a href="/cats/new">New cat!</a>
