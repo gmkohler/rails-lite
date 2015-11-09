@@ -19,7 +19,7 @@ $statuses = [
   { id: 3, cat_id: 1, text: "Curie is cool!" }
 ]
 
-class StatusesController < Phase6::ControllerBase
+class StatusesController < ControllerBase
   def index
     statuses = $statuses.select do |s|
       s[:cat_id] == Integer(params[:cat_id])
@@ -29,7 +29,7 @@ class StatusesController < Phase6::ControllerBase
   end
 end
 
-class CatsController < Phase9::ControllerBase
+class CatsController < ControllerBase
   def index
     render :index
   end
@@ -39,7 +39,7 @@ class CatsController < Phase9::ControllerBase
   end
 end
 
-router = Phase6::Router.new
+router = Router.new
 router.draw do
   get Regexp.new("^/cats/{0,1}$"), CatsController, :index
   get Regexp.new("^/cats/new/{0,1}$"), CatsController, :new
