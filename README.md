@@ -1,7 +1,7 @@
 # rails-lite
   A web server MVC framework written in Ruby, inspired by the functionality of Ruby on Rails' application controller.
   
- #### How to use:
+ ### How to use:
    - Represent tables in a database as global variables (for an example, see [router_sever.rb](https://github.com/gmkohler/rails-lite/blob/master/bin/router_server.rb))
    - Write controller classes that inherit from [ControllerBase](https://github.com/gmkohler/rails-lite/blob/master/lib/controller_base.rb).
    - Construct views in the `views` folder with names corresponding to `controller_names`.
